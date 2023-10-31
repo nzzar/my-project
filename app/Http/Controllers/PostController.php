@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -34,15 +34,31 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+        dd($title, $content);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        return view('posts.show');
+        $posts = Storage::get('posts.txt');
+        $posts = explode("\n", $posts);
+        $selected_post = Array();
+        foreach($posts as $post) {
+            $post = explode(",", $post);
+            if($post[0] == $id) {
+                $selected_post = $post;
+            }
+        }
+
+        $view_data = [
+            'post' => $selected_post
+        ];
+        return view('posts.show', $view_data);
     }
 
     /**

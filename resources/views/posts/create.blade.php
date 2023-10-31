@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog | Judul: {{ $post[1] }}</title>
+    <!--CSS Only-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="{{ asset ('css/blog.css')}}" rel="stylesheet" crossorigin="anonymous">
     <!--Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
+    <title>Blog | Buat Postingan</title>
 </head>
 <body>
-    <div class="container">
-        <article class="blog-post">
-            <h2 class="blog-post-title mb-1">{{ $post[1] }}</h2>
-            <p class="blog-post-meta">{{ date("d M Y H:i", strtotime($post[3])) }} </p>
-    
-            <p>{{ $post[2] }}</p>
-          </article>
-          <a href="{{ url("posts") }}">< Kembali</a>
-    </div>
+    <h1>Buat Postingan Baru</h1>
+    <form method="POST" action="{{ url('posts') }}" class="form-control">
+        @csrf
+        
+        <div class="mb-3">
+            <label for="title" class="form-label">Judul</label>
+            <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Konten</label>
+            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    </form>
 </body>
 </html>
