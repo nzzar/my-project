@@ -19,8 +19,8 @@
         @csrf
         
         <div class="mb-3">
-            <label for="title" class="form-label">Judul</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <label for="ini-title" class="form-label">Judul</label>
+            <input type="text" class="form-control" id="ini-title" name="title">
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Konten</label>
