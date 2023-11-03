@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog | Judul: {{ $post[1] }}</title>
+    <title>Blog | Judul: {{ $post->title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="{{ asset ('css/blog.css')}}" rel="stylesheet" crossorigin="anonymous">
@@ -16,10 +16,10 @@
 <body>
     <div class="container">
         <article class="blog-post">
-            <h2 class="blog-post-title mb-1">{{ $post[1] }}</h2>
-            <p class="blog-post-meta">{{ date("d M Y H:i", strtotime($post[3])) }} </p>
+            <h2 class="blog-post-title mb-1">{{ $post->title }}</h2>
+            <p class="blog-post-meta">{{ date("d M Y H:i", strtotime($post->created_at)) }} </p>
     
-            <p>{{ $post[2] }}</p>
+            <p>{{ $post->content }}</p>
           </article>
           <a href="{{ url("posts") }}">< Kembali</a>
     </div>
